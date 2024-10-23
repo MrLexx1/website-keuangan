@@ -47,6 +47,8 @@ class TransactionResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('category.image')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\IconColumn::make('category.is_expense')
@@ -63,7 +65,6 @@ class TransactionResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('note')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
