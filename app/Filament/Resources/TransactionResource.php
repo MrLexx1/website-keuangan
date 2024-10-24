@@ -49,8 +49,9 @@ class TransactionResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('category.image')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('category.name')
+                    ->description(fn (Transaction $record): string => $record->name, position: 'above')
+                    ->label('name'),
                 Tables\Columns\IconColumn::make('category.is_expense')
                     ->label('Pengeluaran')
                     ->boolean(),
@@ -63,8 +64,6 @@ class TransactionResource extends Resource
                 Tables\Columns\TextColumn::make('amount')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('note')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
