@@ -49,7 +49,7 @@ class TransactionResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('category.image')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('category.name')
+                Tables\Columns\TextColumn::make('category.name') 
                     ->description(fn (Transaction $record): string => $record->name)
                     ->label('Transaksi'),
                 Tables\Columns\IconColumn::make('category.is_expense')
