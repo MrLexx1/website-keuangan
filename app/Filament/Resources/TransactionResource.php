@@ -50,14 +50,11 @@ class TransactionResource extends Resource
                 Tables\Columns\ImageColumn::make('category.image')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('category.name')
-                    ->description(fn (Transaction $record): string => $record->name, position: 'above')
-                    ->label('name'),
+                    ->description(fn (Transaction $record): string => $record->name)
+                    ->label('Transaksi'),
                 Tables\Columns\IconColumn::make('category.is_expense')
                     ->label('Pengeluaran')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('category.name')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('date')
                     ->date()
                     ->sortable(),
