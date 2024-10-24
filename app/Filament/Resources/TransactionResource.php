@@ -27,9 +27,12 @@ class TransactionResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\Select::make('category_id')
-                    ->relationship('category', 'name')
+                    ->getOptionLabelFromRecordUsing(fn (Category $record) =>
+                        ($record->name) . ' ('.($record->is_expense ? 'Pengeluaran' : 'Pemasukan') .')'
+                    )
+                    ->relationShip('category', 'name')
                     ->required(),
-                Forms\Components\DatePicker::make('date')
+                Forms\Components\DatePicker::make('date_transaction')
                     ->required(),
                 Forms\Components\TextInput::make('amount')
                     ->required()
@@ -59,7 +62,7 @@ class TransactionResource extends Resource
                     ->trueColor('danger')
                     ->falseColor('success')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('date')
+                Tables\Columns\TextColumn::make('date_transaction')
                     ->label('Tanggal')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('amount')
